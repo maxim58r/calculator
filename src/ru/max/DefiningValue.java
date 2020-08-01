@@ -1,27 +1,42 @@
 package ru.max;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DefiningValue {
-    private String value;
+    private final String value;
 
     public DefiningValue(String value) {
         this.value = value;
     }
 
+    public void matcher() {
 
-    Pattern patternOperations = Pattern.compile("[-+/*]");
-    Pattern patternNumbers = Pattern.compile("[0-9]");
-    Pattern patternRomanNumerals = Pattern.compile("[IXV]"); // [IXV] roman numerals
+        boolean foundOperations = Pattern.matches("[-+/*]", value);
+        boolean foundNumbers = Pattern.matches("[\\d]+", value);
+        boolean foundRomanNumerals = Pattern.matches("[IXV]+", value);
 
+        if (foundOperations) {
+            new ParseOperation(value);
+            System.out.println("Operation " + value);
+        }
 
-    private void matcher(Pattern pattern) {
-        Matcher matcher = pattern.matcher(value);
+        if (foundNumbers) {
+            try {
+//                new ParseInt(value);
+                ParseInt parseInt = new ParseInt(value);
+                int i = parseInt.getIntVal();
+                System.out.println("Arabic numerals " + i);
+            } catch (NumberException e) {
+                e.printStackTrace();
+            }
 
-            value.substring(matcher.start(), matcher.end());
-        
+        }
 
-        if(patternOperations.matcher(value))
+        if (foundRomanNumerals) {
+           ParseRomanNumber parseRomanNumber = new ParseRomanNumber(value);
+            int i = parseRomanNumber.getNumber();
+            System.out.println("Roman numerals " + value);
+
+        }
     }
 }

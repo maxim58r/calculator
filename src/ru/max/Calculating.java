@@ -1,17 +1,26 @@
 package ru.max;
 
 public class Calculating {
-    int first;
-    String arithOperation;
-    int second;
+    private final int number1;
+    private final int number2;
+    private final ParseOperation operation;
 
-    public Calculating(int first, String arithOperation, int second) {
-        this.first = first;
-        this.arithOperation = arithOperation;
-        this.second = second;
+    public Calculating(int number1, int number2, ParseOperation operation) {
+        this.number1 = number1;
+        this.number2 = number2;
+        this.operation = operation;
     }
 
-    public int calculateV() {
-        return second;
+    public void calculation() {
+        int result;
+        if (operation.equals('*')) {
+            result = number1 * number2;
+        } else if (operation.equals('-')) {
+            result = number1 - number2;
+        } else if (operation.equals('+')) {
+            result = number1 + number2;
+        } else if (operation.equals('/')) {
+            result = number1 / number2;
+        }
     }
 }

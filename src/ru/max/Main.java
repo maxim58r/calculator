@@ -1,8 +1,4 @@
 package ru.max;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -12,10 +8,19 @@ public class Main {
         System.out.print("Enter values: ");
         String inputValues = in.nextLine();
 
-        ArrayList<String> arrVal = new ArrayList<>();
+        new ProcessingIncomValues(inputValues);
 
-        Collections.addAll(arrVal, inputValues.split(" "));
-        ParseVal parseVal = new ParseVal(arrVal);
 
     }
+
+//    private static void arrCol(String inputValues) {
+//        ArrayList<String> arrVal = new ArrayList<>();
+//
+//        Collections.addAll(arrVal, inputValues.split(" "));
+//
+//        for (String val : arrVal) {
+//            DefiningValue dv = new DefiningValue(val);
+//            dv.matcher();
+//        }
+//    }
 }
