@@ -1,15 +1,13 @@
 package ru.max;
 
 public class ParseOperation {
-    String operation;
-    char operator;
+    private final char operator;
+
     public ParseOperation(String operation) {
-        this.operation = operation;
+        operator = operation.charAt(0);
     }
 
-    public char operator() {
-        operator = operation.charAt(0);
+    public char getOperator() {
         return operator;
     }
-
 }

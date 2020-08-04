@@ -1,19 +1,14 @@
 package ru.max;
 
-public class ParseRomanNumber implements Number {
+public class ParseRomanNumberCalc implements NumberCalc {
     private final String romanNumber;
-
-    public int getNumber() {
-        return number;
-    }
-
     private int number;
 
-    public ParseRomanNumber(String romanNumber) {
+    public ParseRomanNumberCalc(String romanNumber) {
         this.romanNumber = romanNumber;
     }
 
-    public void parseToArabic() throws NumberException {
+    public void romanToArabic() throws NumberException {
 
         switch (romanNumber) {
             case "I":
@@ -49,5 +44,11 @@ public class ParseRomanNumber implements Number {
             default:
                 throw new NumberException("The entered number is not Roman");
         }
+    }
+
+    @Override
+    public int getNumber() {
+        System.out.println(number);
+        return number;
     }
 }
