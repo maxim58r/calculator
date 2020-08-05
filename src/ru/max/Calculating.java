@@ -18,18 +18,19 @@ public class Calculating {
             throw new NumberException("Different types of numbers");
     }
 
-    public String calculation() {
+    public String calculationNum() {
         String i = null;
-        if (number1.getClass().toString().equals("class ru.max.ParseRomanNumberCalc")) {
-            i = calculationRoman();
-        } else if (number1.getClass().toString().equals("class ru.max.ParseArabicNumberCalc")) {
-            i = calculationArabic();
+        if (number1.getClass().toString().equals("class ru.max.ConverterRomanNumberCalc")) {
+            int j = calculation(numberOne, numberTwo, operation);
+            i = new ConverterRomanNumberCalc(j).getRomanNum();
+
+        } else if (number1.getClass().toString().equals("class ru.max.ConverterArabicNumberCalc")) {
+            i = Integer.toString(calculation(numberOne, numberTwo, operation));
         }
         return i;
     }
 
-
-    public String calculationArabic() {
+    public int calculation(int numberOne, int numberTwo, char operation) {
         int result = 0;
         if (operation == ('*')) {
             result = numberOne * numberTwo;
@@ -40,12 +41,6 @@ public class Calculating {
         } else if (operation == ('/')) {
             result = numberOne / numberTwo;
         }
-
-        return Integer.toString(result);
+        return result;
     }
-
-    public String calculationRoman() {
-        return "777";
-    }
-
 }

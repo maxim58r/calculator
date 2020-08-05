@@ -12,6 +12,7 @@ public class Main {
 
         ProcessingIncomingValues piv = new ProcessingIncomingValues(inputValues);
         ArrayList<String> arrVal = piv.getArrVal();
+
         DecomposeArrayValues decomposeArrayValues = new DecomposeArrayValues(arrVal);
         String num1 = decomposeArrayValues.getNumber1();
         String num2 = decomposeArrayValues.getNumber2();
@@ -21,7 +22,6 @@ public class Main {
         DeterminingTheTypeOfNumber dvn2 = new DeterminingTheTypeOfNumber(num2);
         DefiningValueOperator dvo = new DefiningValueOperator(operator);
 
-        System.out.println(new Calculating(dvn1.matcher(),dvn2.matcher(),dvo.matcher()).calculation());
-
+        System.out.println(new Calculating(dvn1.matcher(), dvn2.matcher(), dvo.matcher()).calculationNum());
     }
 }

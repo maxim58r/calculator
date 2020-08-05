@@ -9,22 +9,31 @@ public class DeterminingTheTypeOfNumber {
         this.value = value;
     }
 
+    private void probablyNumber(int intVal) {
+        try {
+            if (intVal <= 0 || intVal > 10)
+                throw new NumberException("Number more than 10 or less than 1");
+        } catch (NumberException e) {
+            e.printStackTrace();
+        }
+    }
+
     public NumberCalc matcher() {
-        NumberCalc dvn = null;
+        NumberCalc matcherNum = null;
         boolean foundNumbers = Pattern.matches("[\\d]+", value);
-        boolean foundRomanNumerals = Pattern.matches("[IXV]+", value);
+        boolean foundRomanNumerals = Pattern.matches("[MDCLXVI]+", value);
 
         if (foundNumbers) {
-            try {
-                dvn = new ParseArabicNumberCalc(value);
-            } catch (NumberException e) {
-                e.printStackTrace();
-            }
+            int intVal = Integer.parseInt(value);
+            probablyNumber(intVal);
+            matcherNum = new ConverterArabicNumberCalc(value);
         }
 
         if (foundRomanNumerals) {
-            dvn = new ParseRomanNumberCalc(value);
+                int i = new ConverterRomanNumberCalc(value).getNumber();
+               probablyNumber(i);
+                matcherNum = new ConverterRomanNumberCalc(value);
         }
-        return dvn;
+        return matcherNum;
     }
 }
